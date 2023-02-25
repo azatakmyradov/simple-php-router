@@ -1,0 +1,16 @@
+{
+    "name": "azatakmyradov/routing",
+    "description": "Simple PHP Router",
+    "autoload": {
+        "psr-4": {
+            "Azatakmyradov\\Routing\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Azat Akmyradov",
+            "email": "im.akmyradov@gmail.com"
+        }
+    ],
+    "require": {}
+}
