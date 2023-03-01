@@ -6,6 +6,14 @@
             "Azatakmyradov\\Routing\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Azatakmyradov\\Routing\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
     "authors": [
         {
             "name": "Azat Akmyradov",
