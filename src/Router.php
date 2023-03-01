@@ -12,13 +12,13 @@ class Router
     protected function add($method, $uri, $controller): void
     {
         $this->routes[] = [
-            'uri' => $uri,
+            'uri' => str_starts_with($uri, '/') ? $uri : "/{$uri}",
             'controller' => $controller,
             'method' => $method
         ];
     }
 
-    public function get($uri, $controller): void
+    public function get($uri, $controller)
     {
         $this->add('GET', $uri, $controller);
     }
@@ -65,6 +65,8 @@ class Router
 
             // check if there's exact match
             if ($route['uri'] === $uri) {
+                if (isClosure($route['controller'])) return $route['controller']();
+
                 return Controller::load($route['controller'], []);
             }
 
@@ -87,6 +89,8 @@ class Router
 
             // check if uri matches with wildcards
             if (! (implode('/', $route_uri) === implode('/', $user_uri)) ) continue;
+
+            if (isClosure($route['controller'])) return $route['controller'](...$wildcards);
 
             return Controller::load($route['controller'], $wildcards);
         }

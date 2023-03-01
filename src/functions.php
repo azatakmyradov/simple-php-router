@@ -14,3 +14,8 @@ function base_path($path): string
     echo '</pre>';
     die();
 }
+
+function isClosure($closure): bool
+{
+    return $closure instanceof \Closure;
+}
